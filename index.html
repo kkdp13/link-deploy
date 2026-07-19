@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hold'em Poker for Advanced Players — Summary &amp; Insights</title>
+<style>
+  :root {
+    --bg: #0b1220;
+    --card: #131c2e;
+    --text: #e6e9f0;
+    --muted: #9aa4b8;
+    --accent: #4fd1c5;
+    --accent2: #f6ad55;
+    --border: #24314a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 48px 20px 96px; }
+  h1 { font-size: 2.1rem; margin-bottom: 4px; }
+  .subtitle { color: var(--muted); margin-top: 0; margin-bottom: 40px; }
+  h2 {
+    font-size: 1.4rem;
+    margin-top: 48px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    color: var(--accent);
+  }
+  h3 { font-size: 1.1rem; color: var(--accent2); margin-top: 28px; }
+  p { margin: 12px 0; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .insight {
+    border-left: 3px solid var(--accent);
+    padding: 4px 18px;
+    background: rgba(79,209,197,0.06);
+    border-radius: 0 8px 8px 0;
+    margin: 14px 0;
+  }
+  .insight strong { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; }
+  th { background: #182338; color: var(--accent2); }
+  code { background: #182338; padding: 1px 6px; border-radius: 4px; font-size: 0.9em; }
+  .toc { columns: 2; column-gap: 32px; }
+  .toc li { margin-bottom: 6px; }
+  footer { margin-top: 64px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 16px; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Hold'em Poker for Advanced Players</h1>
+  <p class="subtitle">Summary &amp; insights — David Sklansky &amp; Mason Malmuth (Two Plus Two, 21st Century Edition)</p>
+
+  <div class="card">
+    <strong>What this page is:</strong> a concept-level summary of the book's structure and its core ideas,
+    written from the book's own table of contents plus outside verification (not a page-by-page reproduction
+    of copyrighted text). Use it as a map of the book, not a substitute for reading it.
+  </div>
+
+  <h2>Book structure</h2>
+  <ul class="toc">
+    <li>The first two cards</li>
+    <li>Strategic concepts</li>
+    <li>Miscellaneous topics</li>
+    <li>Playing in loose games</li>
+    <li>Playing short-handed</li>
+    <li>Playing in other non-standard games</li>
+    <li>Other skills (reading hands, psychology)</li>
+    <li>Questions and answers</li>
+  </ul>
+
+  <h2>1. The first two cards</h2>
+  <p>
+    The book's starting point: not every hand is playable, and the value of a hand depends on
+    position, the number of players already in the pot, and how loose or tight the table is.
+    Sklansky and Malmuth group starting hands into eight tiers by rough playability
+    (see the full table below — derived earlier in this thread and re-verified against source).
+  </p>
+
+  <table>
+    <tr><th>Group</th><th>Hands</th></tr>
+    <tr><td>1</td><td>AA, AKs, KK, QQ, JJ</td></tr>
+    <tr><td>2</td><td>AKo, AQs, AJs, KQs, TT</td></tr>
+    <tr><td>3</td><td>AQo, ATs, KJs, QJs, JTs, 99</td></tr>
+    <tr><td>4</td><td>AJo, KQo, KTs, QTs, J9s, T9s, 98s, 88</td></tr>
+    <tr><td>5</td><td>A9s–A2s, KJo, QJo, JTo, Q9s, T8s, 97s, 87s, 77, 76s, 66</td></tr>
+    <tr><td>6</td><td>ATo, KTo, QTo, J8s, 86s, 75s, 65s, 55, 54s</td></tr>
+    <tr><td>7</td><td>K9s–K2s, J9o, T9o, 98o, 64s, 53s, 44, 43s, 33, 22</td></tr>
+    <tr><td>8</td><td>A9o, K9o, Q9o, J8o, J7s, T8o, 96s, 87o, 85s, 76o, 74s, 65o, 54o, 42s, 32s</td></tr>
+  </table>
+
+  <div class="insight">
+    <strong>Insight:</strong> the group system is a starting filter, not a fixed strategy — the book is explicit
+    that <em>how many players are already in the pot</em> shifts a hand's real value more than its group number
+    does. A Group 5 suited connector goes up in value the more people see the flop with you (implied odds
+    compound); a Group 1 big pair goes down in relative value in a very loose multiway pot (more live hands
+    to outdraw it).
+  </div>
+
+  <h3>Chen formula (a numeric shortcut to the same ranking)</h3>
+  <p>A quick point system for scoring any two starting cards, useful at the table without memorizing all 169 combos:</p>
+  <ol>
+    <li>High card score: A=10, K=8, Q=7, J=6, T=5, cards 9–2 = half their face value</li>
+    <li>Pair: double the single-card score, minimum 5</li>
+    <li>Suited: +2</li>
+    <li>Gap between the two cards: 0 gap = no penalty, 1-gap = −1, 2-gap = −2, 3-gap = −4, 4+ gap = −5</li>
+    <li>Straight bonus: +1 if gap ≤ 1 and the high card is Jack or lower</li>
+    <li>Round up to the nearest whole number</li>
+  </ol>
+  <p>Computed across all 169 starting combinations, the hands scoring 7–10 (roughly "worth entering a pot with in normal position"):</p>
+  <table>
+    <tr><th>Score</th><th>Hands</th></tr>
+    <tr><td>10</td><td>AKo, AJs, KQs, TT</td></tr>
+    <tr><td>9</td><td>AQo, KJs, QJs, JTs, 99</td></tr>
+    <tr><td>8</td><td>AJo, ATs, KQo, KTs, QTs, J9s, T9s, 98s, 88</td></tr>
+    <tr><td>7</td><td>A9s, A8s, A7s, A6s, A5s, A4s, A3s, A2s, KJo, QJo, Q9s, JTo, T8s, 97s, 87s, 77, 76s</td></tr>
+  </table>
+  <div class="insight">
+    <strong>Insight:</strong> Chen scoring is a heuristic, not equity — it grades every suited-Ace (A2s through A9s) at
+    exactly 7 points because it only sees "Ace + suited," even though A9s and A2s play very differently in practice
+    (A9s makes top pair more often; A2s is mostly a flush/wheel-draw hand riding one big card). Treat identical
+    Chen scores as "same starting tier," not "same hand."
+  </div>
+
+  <h2>2. Strategic concepts</h2>
+  <p>
+    The core chapters build a small set of ideas that recur through the rest of the book:
+  </p>
+  <ul>
+    <li><strong>Position</strong> — acting later means more information; the same hand is playable in the cutoff/button that should be folded under the gun.</li>
+    <li><strong>The free card</strong> — raising with a draw (semi-bluffing) can win the pot outright, or buy a check on a later street that lets you see another card for free if called.</li>
+    <li><strong>Semi-bluffing</strong> — betting a hand that isn't the best right now but has outs to become the best; different from a pure bluff because it has two ways to win (fold equity + improve equity).</li>
+    <li><strong>Inducing bluffs</strong> — sometimes checking a strong hand invites a weaker player to bet into you, extracting value they wouldn't have paid if you'd bet first.</li>
+    <li><strong>Staying with a draw</strong> — a pot-odds/implied-odds calculation: is the money already in the pot (plus what you expect to win later) enough to justify chasing a flush or straight?</li>
+    <li><strong>Playing when a pair flops</strong> — the book distinguishes top pair, middle pair, and bottom pair as different problems with different correct actions, not one category.</li>
+  </ul>
+  <div class="insight">
+    <strong>Insight:</strong> almost every "strategic concept" chapter is really the same question asked from a
+    different angle — <em>what does my opponent's range do in response to this action, and is that response
+    profitable for me?</em> The free card, the semi-bluff, and inducing a bluff are the same idea (shape the
+    opponent's decision, don't just react to the board) applied at three different moments in a hand.
+  </div>
+
+  <h2>3. Playing in loose games</h2>
+  <p>
+    A large addition in the 21st Century Edition. The core adjustment: in a loose, multiway pot, hands that
+    need to improve (suited connectors, small-to-mid pairs) go <em>up</em> in value because of implied odds
+    from more callers, while big unpaired cards and one-pair hands go <em>down</em> in relative value because
+    they're more likely to be up against a hand that outdraws them by the river.
+  </p>
+  <div class="insight">
+    <strong>Insight:</strong> this is the single biggest way the book's advice changes with game type — the same
+    hand (say, KQo) can be a clear raise in a tight 6-max game and a marginal call-or-fold in an 8-way limped pot,
+    because "how many live hands can beat me by the river" is doing more work than the two cards themselves.
+  </div>
+
+  <h2>4. Playing short-handed</h2>
+  <p>
+    Fewer players means wider ranges are correct everywhere — hands that are folds in a full ring game
+    become opens, and position matters even more because there are fewer players left to act behind you.
+    Aggression compounds: in short-handed play, betting/raising wins pots outright far more often simply
+    because there are fewer opponents who can have a hand.
+  </p>
+
+  <h2>5. Other non-standard games, reading hands, psychology</h2>
+  <p>
+    The closing sections cover unusual structures (e.g. very wild/loose home-style games) and the softer
+    skills: putting opponents on a range from their betting pattern, and adjusting to individual tendencies
+    rather than playing a single fixed strategy against everyone.
+  </p>
+  <div class="insight">
+    <strong>Insight:</strong> the book's implicit thesis, restated in modern terms — <em>starting-hand charts and
+    the Chen formula are the training wheels; the actual skill the book is teaching is range-narrowing on every
+    street based on position, pot size, and the specific player across from you.</em> The numeric systems earlier
+    in the book exist to free up attention for that harder skill, not to replace it.
+  </div>
+
+  <footer>
+    Summary compiled from the book's published table of contents and cross-referenced strategy sources;
+    not a reproduction of the book's text. Read the original for the full detail and worked hand examples.
+  </footer>
+</div>
+</body>
+</html>
